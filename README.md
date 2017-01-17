@@ -21,25 +21,29 @@
 
     compile 'com.github.qianchangbuzhi:University-image-loader:0.1.0'
 ### 3. 复制如下代码到application中 初始化ImageLoader
-  ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(this));
-  //如果想更加详细的初始化请使用下面的初始化方法：
-  ImageLoaderConfiguration.Builder config = new ImageLoaderConfiguration.Builder(context);
-		config.threadPriority(5);//设置加载图片的线程个数
-		config.diskCacheSize(50 * 1024 * 1024); // 设置本地缓存的大小
-		ImageLoader.getInstance().init(config.build());
+
+	   ImageLoader.getInstance().init(ImageLoaderConfiguration.createDefault(this));
+
+	   //如果想更加详细的初始化请使用下面的初始化方法：
+	   ImageLoaderConfiguration.Builder config = new ImageLoaderConfiguration.Builder(context);
+			config.threadPriority(5);//设置加载图片的线程个数
+			config.diskCacheSize(50 * 1024 * 1024); // 设置本地缓存的大小
+			ImageLoader.getInstance().init(config.build());
 ### 4. 复制如下代码到Activity中
-  ImageLoader.getInstance().displayImage(url,imageView);
-  //如果想设置一些详细的图片加载信息，请使用下面重载的方法：
-  DisplayImageOptions options = new DisplayImageOptions.Builder()
-					.showImageOnLoading(R.drawable.ic_stub) //设置图片加载时显示的图片
-					.showImageForEmptyUri(R.drawable.ic_empty) //设置图片加载地址为空时显示的图片
-					.showImageOnFail(R.drawable.ic_error) //设置图片加载错误时显示的图片
-					.cacheInMemory(true) //设置可以在内存中缓存
-					.cacheOnDisk(true) //可以在本地缓存
-					.displayer(new CircleBitmapDisplayer(Color.WHITE, 5)) //设置展示图片为圆角
-					.build();
-  ImageLoader.getInstance().displayImage(IMAGE_URLS[position], holder.image, options);
+
+	  ImageLoader.getInstance().displayImage(url,imageView);
+	  //如果想设置一些详细的图片加载信息，请使用下面重载的方法：
+	  DisplayImageOptions options = new DisplayImageOptions.Builder()
+						.showImageOnLoading(R.drawable.ic_stub) //设置图片加载时显示的图片
+						.showImageForEmptyUri(R.drawable.ic_empty) //设置图片加载地址为空时显示的图片
+						.showImageOnFail(R.drawable.ic_error) //设置图片加载错误时显示的图片
+						.cacheInMemory(true) //设置可以在内存中缓存
+						.cacheOnDisk(true) //可以在本地缓存
+						.displayer(new CircleBitmapDisplayer(Color.WHITE, 5)) //设置展示图片为圆角
+						.build();
+	  ImageLoader.getInstance().displayImage(IMAGE_URLS[position], holder.image, options);
   ###在AndroidManifest.xml中配置网络权限
+
     <uses-permission android:name="android.permission.INTERNET" />
   
   
